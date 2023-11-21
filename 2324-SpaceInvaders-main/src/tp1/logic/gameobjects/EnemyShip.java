@@ -3,6 +3,7 @@ package tp1.logic.gameobjects;
 import tp1.logic.Game;
 import tp1.logic.Move;
 import tp1.logic.Position;
+import tp1.view.Messages;
 
 public abstract class EnemyShip extends Ship {
     protected Move dir;
@@ -15,4 +16,8 @@ public abstract class EnemyShip extends Ship {
     }
     protected abstract int getPoints();
 
+    @Override
+    protected String getStatus() {
+        return Messages.status(getSymbol(), life);
+    }
 }

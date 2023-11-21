@@ -27,6 +27,7 @@ public class Bomb extends EnemyWeapon {
 		return Messages.BOMB_SYMBOL;
 	}
 
+
 	@Override
 	protected int getDamage() {
 		return DAMAGE;

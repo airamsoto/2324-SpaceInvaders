@@ -1,6 +1,7 @@
 package tp1.logic.gameobjects;
 
 import tp1.logic.Game;
+import tp1.logic.GameObjectContainer;
 import tp1.logic.Move;
 import tp1.view.Messages;
 import tp1.logic.Position;
@@ -9,8 +10,6 @@ import tp1.logic.Position;
 public class UCMShip extends  Ship {
 	public static int ARMOUR =3;
 	public static int DAMAGE = 1;
-	private Position pos; 
-	private int life; 
 	private Game game;
 	private int points;
 	private boolean canShoot;
@@ -18,10 +17,8 @@ public class UCMShip extends  Ship {
 	
 
 	
-	public UCMShip (Game game) {
-		super(game, new Position (Game.DIM_X/2, Game.DIM_Y-1), ARMOUR);
-		life = ARMOUR;
-		pos = new Position (Game.DIM_X/2, Game.DIM_Y-1);
+	public UCMShip (Game game, Position pos) {
+		super(game, pos , ARMOUR);
 		canShoot = true;
 		points =0;
 		this.game =  game;
@@ -29,7 +26,6 @@ public class UCMShip extends  Ship {
 
 	@Override
 	protected String getSymbol() {
-
 		if(isAlive()) {
 			return Messages.UCMSHIP_SYMBOL;
 		} else {
@@ -37,7 +33,12 @@ public class UCMShip extends  Ship {
 		}
 
 	}
-
+/*
+	@Override
+	protected String getStatus() {
+		return getSymbol();
+	}
+*/
 	@Override
 	protected int getDamage() {
 		return DAMAGE;
@@ -93,7 +94,17 @@ public class UCMShip extends  Ship {
 		return false;
 	}
 
+	public boolean shootLaser(GameObjectContainer container) {
+		if(canShoot) {
+			canShoot = false;
+			UCMLaser laser = new UCMLaser (game, pos);
+			container.add(laser);
+			return true;
 
+		} else {
+			return false;
+		}
+	}
 
 
 

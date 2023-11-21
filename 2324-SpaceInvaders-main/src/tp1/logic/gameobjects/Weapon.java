@@ -10,4 +10,8 @@ public abstract  class Weapon extends GameObject {
 
     protected abstract boolean isOut();
 
+    @Override
+    protected String getStatus() {
+        return getSymbol();
+    }
 }

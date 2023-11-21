@@ -22,15 +22,12 @@ public class Game implements GameStatus, GameModel, GameWorld  {
 
 
 
-
+	//game status
 	@Override
 	public String positionToString(int x, int y) {
 		Position pos =new Position (x, y);
-	//	String sr = new String ("");
+		//String sr = new String ("");
 		return container.toString(pos);
-	//	return sr;
-
-
 	}
 
 	@Override
@@ -63,74 +60,60 @@ public class Game implements GameStatus, GameModel, GameWorld  {
 		return alienManager.aliensLeft();
 	}
 
+	//game model
+	@Override
+	public boolean move (Move move) {
+		return player.move(move);
+	}
 
+	@Override
+	public boolean shootLaser() {
+		return player.shootLaser(container);
+	}
 
-
-
-
-
-
-
+	@Override
+	public void reset() {
+		initGame();
+		//faltaria ver lo de que se reinicie el laser que tuvimos mal en la practica 1
+	}
 
 
 	public Level getLevel() {
-
 		return level;
 	}
 
 	public void receivePoints (int points) {
-
 		player.receivePoints(points);
 	}
 
 	public Random getRandom() {
-
 		return rand;
 	}
 	public void enableLaser() {
-
 		//player.enableLaser();
 	}
 	
 	public Game(Level level, long seed) {
-	
 		this.level = level;
 		this.seed = seed;
 		initGame();
 	}
+
 	private void initGame () {
 		container = new GameObjectContainer();
+
 		rand = new Random(seed);
-		player = new UCMShip(this);
-		container.add(player);
-		alienManager = new AlienManager (this, level);
+		doExit = false;
 		currentCycle = 0;
+
+		alienManager = new AlienManager(this, level);
 		container = alienManager.initialize();
+		player = new UCMShip(this, new Position(DIM_X / 2, DIM_Y - 1));
+		container.add(player);
 	}
 	
-	public void reset(){
-
-		initGame();
-	}
-
-	/*public void addObject (UCMLaser laser) {
-
-		this.laser = laser;
-
-	}
-	public void addObject (Bomb b) {
-
-		bombs.add(b, this);
-	}
-*/
 
 
-
-
-
-	
-
-	
 	//public void enableLaser() {
 
 	//	player.enableLaser();
@@ -157,17 +140,10 @@ public class Game implements GameStatus, GameModel, GameWorld  {
 		hasShockwave = false;
 		
 	}
-	
-	public boolean move (Move move) {
 
-		return player.move(move);
-	}
 
-	public boolean shootLaser () {
 
-		//return player.shootLaser();
-		return true;
-	}
+
 
 	public void automaticMoves () {
 		container.automaticMoves();
@@ -218,10 +194,7 @@ public class Game implements GameStatus, GameModel, GameWorld  {
 	}
 
 
-	public String getInfo() {
-return "";
-		//return player.getInfo() + "\n" +regularAliens.getInfo() + "\n" + destroyerAliens.getInfo() + "\n" + ufo.getInfo();
-	}
+
 	
 	public void checkAttacksTo(RegularAlien regularAlien) {
 

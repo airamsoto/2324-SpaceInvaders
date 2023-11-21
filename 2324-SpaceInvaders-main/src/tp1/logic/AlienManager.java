@@ -24,14 +24,15 @@ public class AlienManager {
 	public GameObjectContainer initialize () {
 		GameObjectContainer container = new GameObjectContainer();
 		initializeOvni(container);
+		initializeRegularAliens(container);
+		initializeDestroyerAliens(container);
 
 
 
 		return container;
 	}
 	private void initializeOvni(GameObjectContainer container) {
-		//hay que ver lo del constructor del ufo
-		// container.add(new Ufo(game));
+		container.add(new Ufo(game));
 	}
 
 	public AlienManager(Game game, Level level) {
@@ -52,35 +53,30 @@ public class AlienManager {
 	 * Initializes the list of regular aliens
 	 * @return the initial list of regular aliens according to the current level
 	 */
-	/*protected RegularAlienList initializeRegularAliens() {
-
-		RegularAlienList regularAlienList = new RegularAlienList(level.getRegularAliens());
+	protected void initializeRegularAliens(GameObjectContainer container) {
 		remainingAliens+=level.getRegularAliens();
 		for(int j=0; j< level.getnumRowsRegularAliens(); j++) {
 			for (int i = 0; i < level.getRegularAliens() / level.getnumRowsRegularAliens(); i++) {
 	
-			RegularAlien regularAlien = new RegularAlien (game, new Position (i+2, 1+j), this);
-			regularAlienList.add(regularAlien);
+			 container.add(new RegularAlien (game, new Position (i+2, 1+j), this));
 			}
 		}
-		return regularAlienList;
+
 	}
 	
 	/**
 	 * Initializes the list of destroyer aliens
 	 * @return the initial list of destroyer aliens according to the current level
 	 */
-	/*protected  DestroyerAlienList initializeDestroyerAliens() {
-
-		DestroyerAlienList destroyerAlienList = new DestroyerAlienList(level.getDestroyerAliens());
+	protected  void initializeDestroyerAliens(GameObjectContainer cotainer) {
 		remainingAliens+=level.getDestroyerAliens();
 		for (int i = 0; i < level.getDestroyerAliens(); i++) {
-			DestroyerAlien destroyerAlien = new DestroyerAlien (game, new Position (i+((Game.DIM_X+1)/(level.getDestroyerAliens()+1)), level.getnumRowsRegularAliens()+1), this);
-			destroyerAlienList.add(destroyerAlien);
+
+			cotainer.add(new DestroyerAlien (game, new Position (i+((Game.DIM_X+1)/(level.getDestroyerAliens()+1)), level.getnumRowsRegularAliens()+1), this));
 		}
-		return destroyerAlienList;
+
 	}
-	*/
+
 
 
 	// CONTROL METHODS

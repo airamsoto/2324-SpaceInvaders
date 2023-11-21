@@ -42,11 +42,12 @@ public class GameObjectContainer {
 	}
 
 	public String toString(Position pos) {
-		for (int i=0;i<2;i++) {
+		String sr = new String ("");
+		for (int i = 0; i < objects.size(); i++) {
 			GameObject object = objects.get(i);
-			return object.toString(pos);
+			sr += object.toString(pos);
 
 		}
-		return null;
+		return sr;
 	}
 }

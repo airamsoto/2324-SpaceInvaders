@@ -10,6 +10,8 @@ public abstract class Ship extends GameObject {
         super(game, pos, life);
     }
 
-
-
+    @Override
+    protected String getStatus() {
+        return getSymbol();
+    }
 }

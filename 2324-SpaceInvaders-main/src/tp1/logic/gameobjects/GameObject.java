@@ -38,7 +38,7 @@ public abstract class GameObject implements GameItem {
 	public String toString (Position pos) {
 
 		if(isOnPosition(pos)) {
-			return Messages.status(getSymbol(), life);
+			return getStatus();
 
 		} else {
 			return "";
@@ -66,6 +66,7 @@ public abstract class GameObject implements GameItem {
 
 	
 	protected abstract String getSymbol();
+	protected abstract String getStatus();
 	protected abstract int getDamage();
 	protected abstract int getArmour();
 

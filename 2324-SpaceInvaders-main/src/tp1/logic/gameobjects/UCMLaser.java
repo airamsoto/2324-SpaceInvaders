@@ -29,6 +29,7 @@ public class UCMLaser extends UCMWeapon {
 		return Messages.LASER_SYMBOL;
 	}
 
+
 	@Override
 	protected int getDamage() {
 		return DAMAGE;

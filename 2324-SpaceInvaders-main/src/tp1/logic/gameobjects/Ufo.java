@@ -12,9 +12,9 @@ public class Ufo extends EnemyShip {
 	public static int POINTS = 25;
 	public static int ARMOUR  = 1;
 
-	public  Ufo (Game game, Position pos, int speed){
-		super(game, pos, ARMOUR);
-		this.speed = speed;
+	public  Ufo (Game game){
+		super(game, new Position (Game.DIM_X,0), ARMOUR);
+		this.speed = game.getLevel().getSpeed();
 		dir = Move.LEFT;
 		life = ARMOUR;
 		cyclesToMove = 0;
