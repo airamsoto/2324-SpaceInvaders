@@ -33,12 +33,18 @@ public class UCMShip extends  Ship {
 		}
 
 	}
-/*
+
 	@Override
 	protected String getStatus() {
 		return getSymbol();
 	}
-*/
+
+	/*
+        @Override
+        protected String getStatus() {
+            return getSymbol();
+        }
+    */
 	@Override
 	protected int getDamage() {
 		return DAMAGE;
