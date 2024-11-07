@@ -20,23 +20,25 @@ The game takes place on a **9 x 8** grid where the player controls a spaceship (
 - **Destroyer Alien**: Alien ships with 1 health point that can drop bombs.
 - **UFO**: Provides a *shockWave* to the player when destroyed.
 
-### Game Command
+### Game Commands
+
 Players can interact with the game using the following commands:
 
-move <left|lleft|right|rright>: Moves the UCMShip in the specified direction.
-shoot: Fires a laser from the UCMShip.
-shockwave: Activates a shockWave to damage all alien ships on the board.
-list: Displays the list of current ships with their attributes (damage, endurance, etc.).
-help: Prints a list of available commands.
-reset: Resets the game to its initial state.
-exit: Exits the game with a "Game Over" message.
-none: Skips the current turn without performing any action.
-Note on Commands:
+- **move <left|lleft|right|rright>**: Moves the UCMShip in the specified direction.
+- **shoot**: Fires a laser from the UCMShip.
+- **shockwave**: Activates a *shockWave* to damage all alien ships on the board.
+- **list**: Displays the list of current ships with their attributes (damage, endurance, etc.).
+- **help**: Prints a list of available commands.
+- **reset**: Resets the game to its initial state.
+- **exit**: Exits the game with a "Game Over" message.
+- **none**: Skips the current turn without performing any action.
 
-Commands can be written in lowercase, uppercase, or mixed case.
-The first letter (or the letter indicated in brackets) of each command can be used as a shortcut (e.g., [M]ove, [S]hoot, shock[W]ave, [L]ist, [R]eset, [H]elp, [E]xit, [N]one).
-If the command is empty, it is interpreted as none, moving to the next game cycle.
-If an invalid command is entered, an error message will be displayed, and the board will not be redrawn.
+#### Note on Commands
+
+- Commands can be written in lowercase, uppercase, or mixed case.
+- The first letter (or the letter indicated in brackets) of each command can be used as a shortcut (e.g., `[M]ove`, `[S]hoot`, `shock[W]ave`, `[L]ist`, `[R]eset`, `[H]elp`, `[E]xit`, `[N]one`).
+- If the command is empty, it is interpreted as `none`, moving to the next game cycle.
+- If an invalid command is entered, an error message will be displayed, and the board will not be redrawn.
 
 ### Game Cycle
 
